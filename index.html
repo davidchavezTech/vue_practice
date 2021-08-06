@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Practice</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <style>
+        .box {
+            padding: 100px 0;
+            width: 400px;
+            text-align: center;
+            background: #ddd;
+            margin:20px;
+            display: inline-block;
+        }
+        body{
+            background: #eee;
+            max-width: 960px;
+            margin: 20px auto;
+        }
+        p, h3, ul{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style-type: none;
+            background: #fff;
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        li.fav{
+            background: #ff9ed2;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hello Vue, ;)</h1>
+
+    <div id="app">
+        <div v-if="showBooks">
+            <ul>
+                <!-- @click="book.isFav = !book.isFav" -->
+                <li v-for="book in books" :class="{ fav: book.isFav}" @click="toggleFavClass(book)">
+                    <img :src="book.img" alt="book.title">
+                    <h3>Book name - {{ book.title}}</h3>
+                    <p>Book author - {{ book.author}}</p>
+                </li>
+            </ul>
+            <!-- <p>{{ title }} - {{ author }} - {{ age }}</p> -->
+            <!-- <button v-on:click="age++">Increase age</button>
+            <button @click="age--">Decrease age</button>
+            <button @click="changeTitle('Mi título')">Click me!</button> -->
+        </div>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide books!</span>
+            <!-- <span v-if="!showBooks">Show books!</span> -->
+            <span v-else>Show books!</span>
+        </button>
+
+        <br>
+        <a :href="url">Dynamic link!</a>
+        <!-- <p v-show="showBooks">hide me</p> -->
+
+        <!-- Click events-->
+        <!-- <div class="box" @mouseOver="mouseEvent">Mouse over</div>
+        <div class="box" @mouseLeave="mouseEvent">Mouse leave</div>
+        <div class="box" @dblClick="mouseEvent">Double click</div>
+        <div class="box" @mouseMove="mouseEvent($event, 5)">{{ x }} - {{ y }}</div> -->
+    </div>
+
+
+
+    <script src="app.js"></script>
+</body>
+</html>
